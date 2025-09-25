@@ -37,6 +37,12 @@
   padding: 2em;
 }
 
+.header {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
 .read-the-docs {
   color: #888;
 }
