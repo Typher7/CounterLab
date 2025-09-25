@@ -1,7 +1,9 @@
 
 # CounterLab — Multi Counter Dashboard
 
-A small React + Vite app that lets you create multiple counters, increment/decrement them, reset, and delete. The UI is styled with Tailwind CSS and counter data is persisted to localStorage (and synced across tabs).
+![CounterLab screenshot](./public/image.png)
+
+*A small React + Vite app that lets you create multiple counters, increment/decrement them, reset, and delete. The UI is styled with Tailwind CSS and counter data is persisted to localStorage (and synced across tabs).*
 
 ## Features
 
