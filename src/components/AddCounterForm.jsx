@@ -26,8 +26,13 @@ function AddCounterForm({ onAdd }) {
           type="text"
           placeholder="Enter counter name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="flex-1 rounded-md border border-slate-200 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent"
+          onChange={(e) => {
+            let value = e.target.value;
+            if (value.length > 17) { // change 10 to whatever max length you want
+              value = value.slice(0, 14) + "...";
+            }
+            setName(value);
+          }} className="flex-1 rounded-md border border-slate-200 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent"
         />
 
         <button
