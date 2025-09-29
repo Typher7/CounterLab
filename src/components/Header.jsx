@@ -6,7 +6,7 @@ function Header({ total, onResetAll, onDeleteAll, hasCounters }) {
   };
 
   return (
-    <header className="bg-gradient-to-r from-sky-500 to-indigo-600 text-white py-6 shadow-md">
+  <header className="bg-gradient-to-r from-emerald-600 to-green-500 text-white py-6 shadow-md">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <img src="/counter.png" alt="Counter Icon" className="h-10 w-10" />
@@ -26,7 +26,7 @@ function Header({ total, onResetAll, onDeleteAll, hasCounters }) {
             <button
               onClick={onResetAll}
               disabled={!hasCounters}
-              className="inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/20 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-white/30"
+              className="inline-flex items-center gap-2 rounded-md bg-white/50 px-3 py-2 text-sm text-white hover:bg-white/20 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-white/30"
             >
               Reset all
             </button>
@@ -34,7 +34,7 @@ function Header({ total, onResetAll, onDeleteAll, hasCounters }) {
             <button
               onClick={handleDeleteAll}
               disabled={!hasCounters}
-              className="inline-flex items-center gap-2 rounded-md bg-red-600 px-3 py-2 text-sm text-white hover:bg-red-700 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-red-300"
+              className="inline-flex items-center gap-2 rounded-md bg-rose-600 px-3 py-2 text-sm text-white hover:bg-rose-700 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-rose-300"
             >
               Delete all
             </button>

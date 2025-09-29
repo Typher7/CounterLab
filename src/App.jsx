@@ -79,7 +79,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-green-50">
       <div className="sticky top-0 z-10">
         <Header total={total} onResetAll={resetAll} onDeleteAll={deleteAll} hasCounters={counters.length > 0} />
       </div>
