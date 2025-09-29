@@ -61,10 +61,18 @@ function App() {
 
   const total = counters.reduce((sum, c) => sum + c.value, 0);
 
+  const resetAll = () => {
+    setCounters((prev) => prev.map((c) => ({ ...c, value: 0 })));
+  };
+
+  const deleteAll = () => {
+    setCounters([]);
+  };
+
   return (
     <div className="min-h-screen bg-slate-50">
       <div className="sticky top-0 z-10">
-        <Header total={total} />
+        <Header total={total} onResetAll={resetAll} onDeleteAll={deleteAll} hasCounters={counters.length > 0} />
       </div>
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
