@@ -1,69 +1,78 @@
-
 # CounterLab — Multi Counter Dashboard
 
 ![CounterLab screenshot](./public/image.png)
 
-*A small React + Vite app that lets you create multiple counters, increment/decrement them, reset, and delete. The UI is styled with Tailwind CSS and counter data is persisted to localStorage (and synced across tabs).*
+A small React + Vite dashboard for creating and managing multiple counters. The UI uses Tailwind CSS and the project was updated to a green/emerald theme.
 
-## Features
+## Highlights
 
-- Create named counters
-- Increment / decrement values with quick buttons
-- Reset or delete individual counters
-- Persistent storage using localStorage (survives page refresh)
-- Cross-tab sync (changes in one tab update others)
-- Responsive layout built with Tailwind CSS
+- Create named counters (names are trimmed and duplicates are prevented — case-insensitive).
+- Increment / decrement counters quickly.
+- Reset or delete individual counters.
+- Reset all counters to zero or delete all counters at once (delete all prompts for confirmation).
+- Data persists in `localStorage` and syncs across browser tabs.
 
-## Quick start
+## Tech stack
+
+- React 19 (JSX)
+- Vite (dev server + build)
+- Tailwind CSS
+- ESLint
+
+## Important files
+
+- `src/main.jsx` — app bootstrap
+- `src/App.jsx` — root component: state, localStorage persistence, and top-level handlers
+- `src/index.css` — imports Tailwind
+- `src/components/Header.jsx` — top header with total and Reset All / Delete All actions
+- `src/components/AddCounterForm.jsx` — add-counter form (client-side trimming and length check)
+- `src/components/CounterList.jsx` — grid container for counter cards
+- `src/components/CounterCard.jsx` — individual counter UI
+
+## Run locally
 
 Requirements:
 - Node.js 18+ (or a recent LTS)
-- npm (or your preferred package manager)
+- npm (or yarn/pnpm)
 
-Install dependencies and run the dev server:
+Install and run dev server:
 
 ```powershell
 npm install
 npm run dev
 ```
 
-Open http://localhost:5173 (or the port Vite shows) to view the app.
+Open the URL Vite prints (usually http://localhost:5173 or a nearby port).
 
-Build for production:
+Build and preview:
 
 ```powershell
 npm run build
 npm run preview
 ```
 
-## Project structure (important files)
+## Behavior notes
 
-- `src/App.jsx` — App root. Handles state, persistence (localStorage), and high-level layout.
-- `src/index.css` — imports Tailwind base. Tailwind utilities are available throughout the app.
-- `src/components/Header.jsx` — top header with total sum display.
-- `src/components/AddCounterForm.jsx` — form to add counters.
-- `src/components/CounterList.jsx` — grid container for counter cards.
-- `src/components/CounterCard.jsx` — individual counter card with controls.
+- Duplicate prevention: adding a counter whose name matches an existing one (case-insensitive, trimmed) is blocked and the user receives an alert.
+- Reset All sets every counter value to 0.
+- Delete All clears all counters and asks for confirmation.
+- Data key: `multi-counter:counters` in `localStorage`.
+- Cross-tab sync: implemented via the `storage` event.
 
-## Persistence details
+## Theming
 
-Counters are stored under the key `multi-counter:counters` in `localStorage`. The app:
+The UI currently uses a green/emerald color palette. To further customize colors, update Tailwind configuration or edit component utility classes.
 
-- Loads saved counters on startup (falls back to an empty list if storage is missing or malformed).
-- Saves counters whenever they change.
-- Listens for `storage` events to update state when another tab modifies the stored counters.
+## Developer tips
 
-This is intentionally simple and suited for small datasets. If you need to store large datasets or require robust offline support, consider using IndexedDB (e.g. with localForage).
+- Lint: `npm run lint`
+- Consider extracting storage logic if you plan to add remote sync or more complex persistence.
 
-## Tailwind
+## Possible next work we can do
 
-Tailwind is already installed and `src/index.css` imports Tailwind. If you need to update Tailwind settings (colors, breakpoints, plugins), edit or add a `tailwind.config.cjs` in the project root.
+- Replace `alert()` duplicate warnings with inline validation messages in the form
+- Add import/export (JSON) for counters
+- Add unit tests for core behaviors
+- Convert the app to TypeScript
 
-## Next steps / ideas
-
-- Add an empty-state screen when there are no counters
-- Add "Reset all" / "Export JSON" / "Import JSON" features
-- Add small animations to card interactions
-- Add tests for core behaviors (adding counters, increment/decrement, persistence)
-
-If you'd like, I can implement any of the items above. Tell me which one to work on next.
+Tell us which item you'd like next and we will implement it.
