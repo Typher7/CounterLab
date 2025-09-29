@@ -18,8 +18,17 @@ function App() {
   });
 
   const addCounter = (name) => {
-    if (name.trim() === "") return;
-    setCounters((prev) => [...prev, { id: Date.now(), name, value: 0 }]);
+    const trimmed = name.trim();
+    if (trimmed === "") return;
+
+    // Prevent duplicates (case-insensitive)
+    const exists = counters.some((c) => c.name.trim().toLowerCase() === trimmed.toLowerCase());
+    if (exists) {
+      window.alert(`A counter named "${trimmed}" already exists.`);
+      return;
+    }
+
+    setCounters((prev) => [...prev, { id: Date.now(), name: trimmed, value: 0 }]);
   };
 
   const updateCounter = (id, change) => {
