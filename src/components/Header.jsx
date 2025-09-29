@@ -12,13 +12,12 @@ function Header({ total, onResetAll, onDeleteAll, hasCounters }) {
           <img src="/counter.png" alt="Counter Icon" className="h-10 w-10" />
           <div>
             <h1 className="text-xl font-semibold tracking-tight">Counter Dashboard</h1>
-            <p className="text-sm text-white/90">Manage your counters quickly</p>
           </div>
         </div>
 
         <div className="text-right flex items-center gap-4">
           <div className="text-right mr-4">
-            <p className="text-sm text-white/80">Total Sum</p>
+            <p className="text-sm text-white/100">TOTAL</p>
             <p className="mt-1 text-2xl font-bold tabular-nums">{total}</p>
           </div>
 
