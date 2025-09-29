@@ -18,8 +18,17 @@ function App() {
   });
 
   const addCounter = (name) => {
-    if (name.trim() === "") return;
-    setCounters((prev) => [...prev, { id: Date.now(), name, value: 0 }]);
+    const trimmed = name.trim();
+    if (trimmed === "") return;
+
+    // Prevent duplicates (case-insensitive)
+    const exists = counters.some((c) => c.name.trim().toLowerCase() === trimmed.toLowerCase());
+    if (exists) {
+      window.alert(`A counter named "${trimmed}" already exists.`);
+      return;
+    }
+
+    setCounters((prev) => [...prev, { id: Date.now(), name: trimmed, value: 0 }]);
   };
 
   const updateCounter = (id, change) => {
@@ -61,10 +70,18 @@ function App() {
 
   const total = counters.reduce((sum, c) => sum + c.value, 0);
 
+  const resetAll = () => {
+    setCounters((prev) => prev.map((c) => ({ ...c, value: 0 })));
+  };
+
+  const deleteAll = () => {
+    setCounters([]);
+  };
+
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-green-50">
       <div className="sticky top-0 z-10">
-        <Header total={total} />
+        <Header total={total} onResetAll={resetAll} onDeleteAll={deleteAll} hasCounters={counters.length > 0} />
       </div>
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
